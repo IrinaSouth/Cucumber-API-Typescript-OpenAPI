@@ -1,0 +1,9 @@
+
+
+*****Set up to run your tests locally******
+
+Run `yarn install`
+
+Then run `yarn generate-api-client`
+
+Finally, run `yarn test`

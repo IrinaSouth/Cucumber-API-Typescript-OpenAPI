@@ -1,0 +1,147 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "",
+    "title": "Todo",
+    "description": ""
+  },
+  "host": "localhost:3000",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/todo/{id}/resolve": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "put": {
+        "operationId": "resolveTodo",
+        "produces": [
+          "application/json"
+        ],
+        "summary": "resolveTodo",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Todo"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/todo/{id}/remove": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "delete": {
+        "operationId": "removeTodo",
+        "summary": "removeTodo",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Todo"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/todo/add": {
+      "post": {
+        "operationId": "addTodo",
+        "summary": "addTodo",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/Todo"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Todo"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/todo/list": {
+      "get": {
+        "operationId": "listTodos",
+        "summary": "listTodos",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Todo"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Todo": {
+      "title": "Todo",
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "required": true
+        },
+        "title": {
+          "type": "string"
+        },
+        "resolved": {
+          "type": "boolean"
+        },
+        "when": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    }
+  }
+}
